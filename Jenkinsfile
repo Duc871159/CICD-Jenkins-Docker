@@ -1,18 +1,35 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'maven:3-alpine'
+            args '-v /root/.m2:/root/.m2'
+        }
+    }
+    options {
+        skipStagesAfterUnstable()
+    }
     stages {
-        stage('Clone stage') {
+        stage('Build') {
             steps {
-                git credentialsId: 'cicd-demo', url: 'https://gitlab.com/Ducna871159/cicd-demo.git'
+                sh 'mvn -B -DskipTests clean package'
             }
         }
-        stage('Clone docker') {
+        /*
+        stage('Test') {
             steps {
-                withDockerRegistry(credentialsId: 'docker-hub-1', url: 'https://index.docker.io/v1/') {
-                    sh 'docker build -t duc871159/cicd-demo:v2 .'
-                    sh 'docker push duc871159/cicd-demo:v2'
+                sh 'mvn test'
+            }
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
                 }
             }
         }
+        stage('Deliver') { 
+            steps {
+                sh './jenkins/scripts/deliver.sh' 
+            }
+        }
+        */
     }
 }
