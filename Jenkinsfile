@@ -1,9 +1,10 @@
 pipeline {
     agent {
-        docker {
+        docker none
+	    /* {
             image 'maven:3-alpine'
             args '-v /root/.m2:/root/.m2'
-        }
+        } */
     }
     options {
         skipStagesAfterUnstable()
@@ -12,7 +13,7 @@ pipeline {
         stage('Build') {
             steps {
 		echo '???'
-                sh 'mvn -B -DskipTests clean package'
+                // sh 'mvn -B -DskipTests clean package'
             }
         } /*
         stage('Test') {
