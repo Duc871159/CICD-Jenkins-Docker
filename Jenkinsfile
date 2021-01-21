@@ -6,9 +6,9 @@ pipeline {
             args '-v /root/.m2:/root/.m2'
         } 
     } 
-    options {
-        skipStagesAfterUnstable()
-    }
+    //options {
+      //  skipStagesAfterUnstable()
+    //}
     stages {
         stage('Build') {
             steps {
