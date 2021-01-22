@@ -4,7 +4,7 @@ package com.example.cicddemo;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.After;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,7 +27,7 @@ public class CicddemoApplicationTests {
     public void contextLoads() {
         try {
             testCalculatorAdd(1,2,3);
-            testCalculatorMinus(5, 1, 3);
+            testCalculatorMinus(5,1,4);
         } catch (AssertionError e) {
             fail("Loi: " + e.getMessage());
         }
@@ -38,7 +38,7 @@ public class CicddemoApplicationTests {
             assertEquals(x + y, sum);
             System.out.println("SUCCESS");
         } catch (AssertionError e) {
-            throw new AssertionError("Error: " + x + " + " + y + "=" + sum);
+            throw new AssertionError("Error: " + x + " + " + y + " = " + sum);
         }
     }
 
@@ -47,7 +47,7 @@ public class CicddemoApplicationTests {
             assertEquals(x - y, minus);
             System.out.println("SUCCESS");
         } catch (AssertionError e) {
-            throw new AssertionError("Error: " + x + " - " + y + "=" + minus);
+            throw new AssertionError("Error: " + x + " - " + y + " = " + minus);
         }
     }
 
