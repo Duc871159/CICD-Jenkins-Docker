@@ -27,7 +27,7 @@ public class CicddemoApplicationTests {
     public void contextLoads() {
         try {
             testCalculatorAdd(1,2,3);
-            testCalculatorMinus(5,1,4);
+            testCalculatorMinus(5,1,3);
         } catch (AssertionError e) {
             fail("Loi: " + e.getMessage());
         }
